@@ -1,11 +1,19 @@
-(function() {
+(function(){
   'use strict';
 
-  angular.module('quiz')
-      .service('quizService', ['$q', QuizService]);
+  angular.module('users')
+         .service('userService', ['$q', UserService]);
 
-  function QuizService($q) {
-    var db = [
+  /**
+   * Users DataService
+   * Uses embedded, hard-coded data model; acts asynchronously to simulate
+   * remote data service call(s).
+   *
+   * @returns {{loadAll: Function}}
+   * @constructor
+   */
+  function UserService($q){
+    var users = [
       {
         name: 'Lia Lugo',
         avatar: 'svg-1',
@@ -38,10 +46,11 @@
       }
     ];
 
+    // Promise-based API
     return {
-      loadAllQuizzes: function() {
+      loadAllUsers : function() {
         // Simulate async nature of real remote calls
-        return $q.when(db);
+        return $q.when(users);
       }
     };
   }
