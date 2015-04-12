@@ -1,0 +1,14 @@
+{
+  "name": "QuizApp",
+  "description": "Quiz Web App.",
+  "manifest_version": 2,
+  "version": "0.2",
+  "icons": {
+    "128": "icon.png"
+  },
+  "app": {
+    "launch": {
+      "web_url": "http://development.quiz-webapp.divshot.io/"
+    }
+  }
+}

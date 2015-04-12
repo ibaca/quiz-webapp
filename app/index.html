@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" manifest="quiz.appcache">
+<head>
+  <title>Quiz Web App</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <link href="icon.png" rel="apple-touch-icon"/>
+  <link href="icon.png" rel="icon"/>
+
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+  <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
+  <link rel="stylesheet" href="./bower_components/icomoon/dist/css/style.css"/>
+  <link rel="stylesheet" href="assets/app.css"/>
+</head>
+
+<body ng-app="quizApp" layout="column" ng-controller="QuizController as qc">
+
+<md-toolbar layout="row">
+  <md-button class="menu" hide-gt-sm ng-click="qc.toggleList()" aria-label="Show Quizzes List">
+    <md-icon md-svg-icon="menu"></md-icon>
+  </md-button>
+  <h1>Quiz Web App</h1>
+</md-toolbar>
+
+<div flex layout="row">
+
+  <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left">
+    <div layout="row">
+    <md-input-container md-no-float style="height: 42px; padding: 2px;" flex="auto">
+      <input ng-model="searchText" type="text" placeholder="Enter text to filter quizzes" style="width: 100%"/>
+    </md-input-container>
+    <md-button><i class="icon-pencil-2"></i></md-button>
+    </div>
+    <md-list>
+      <md-item ng-repeat="it in qc.quizzes | filter:searchText">
+        <md-button ng-click="qc.selectQuiz(it)" ng-class="{'selected' : it === qc.selected }">
+          <i class="icon-arrow-right"></i> {{it.name}}
+        </md-button>
+      </md-item>
+    </md-list>
+  </md-sidenav>
+
+  <md-content flex id="content">
+    <md-icon md-svg-icon="{{qc.selected.avatar}}" class="avatar"></md-icon>
+    <h2>{{qc.selected.name}}</h2>
+
+    <p>{{qc.selected.content}}</p>
+
+    <md-button class="share" md-no-ink ng-click="qc.share($event)" aria-label="Share">
+      <md-icon md-svg-icon="share"></md-icon>
+    </md-button>
+  </md-content>
+
+</div>
+
+<script src="./bower_components/angular/angular.js"></script>
+<script src="./bower_components/angular-animate/angular-animate.js"></script>
+<script src="./bower_components/angular-aria/angular-aria.js"></script>
+<script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
+
+<script src="src/quiz/Quiz.js"></script>
+<script src="src/quiz/QuizController.js"></script>
+<script src="src/quiz/QuizService.js"></script>
+
+<script type="text/javascript">
+
+  angular
+      .module('quizApp', ['ngMaterial', 'quiz'])
+      .config(function($mdIconProvider) {
+        $mdIconProvider
+            .defaultIconSet("./assets/svg/avatars.svg", 128)
+            .icon("menu", "./assets/svg/menu.svg", 24)
+            .icon("share", "./assets/svg/share.svg", 24)
+            .icon("google_plus", "./assets/svg/google_plus.svg", 512)
+            .icon("hangouts", "./assets/svg/hangouts.svg", 512)
+            .icon("twitter", "./assets/svg/twitter.svg", 512)
+            .icon("phone", "./assets/svg/phone.svg", 512);
+      });
+
+</script>
+
+</body>
+</html>

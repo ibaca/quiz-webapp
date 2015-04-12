@@ -1,0 +1,38 @@
+CACHE MANIFEST
+
+# Explicitly cached entries
+index.html
+icon.png
+assets/app.css
+src/quiz/view/contactSheet.html
+src/quiz/Quiz.js
+src/quiz/QuizController.js
+src/quiz/QuizService.js
+
+bower_components/angular/angular.js
+bower_components/angular-animate/angular-animate.js
+bower_components/angular-aria/angular-aria.js
+bower_components/angular-material/angular-material.css
+bower_components/angular-material/angular-material.js
+
+bower_components/icomoon/dist/fonts/icomoon.eot
+bower_components/icomoon/dist/fonts/icomoon.svg
+bower_components/icomoon/dist/fonts/icomoon.ttf
+bower_components/icomoon/dist/fonts/icomoon.woff
+bower_components/icomoon/dist/css/style.css
+
+http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic
+
+# All other resources (e.g. sites) require the user to be online.
+NETWORK:
+*
+
+# Additional resources to cache
+CACHE:
+assets/svg/google_plus.svg
+assets/svg/hangouts.svg
+assets/svg/mail.svg
+assets/svg/menu.svg
+assets/svg/phone.svg
+assets/svg/share.svg
+assets/svg/twitter.svg

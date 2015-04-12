@@ -1,0 +1,9 @@
+{
+  "name": "quiz-webapp",
+  "root": "./app",
+  "clean_urls": true,
+  "cache_control": {},
+  "routes": {
+    "**": "index.html"
+  }
+}
